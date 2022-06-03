@@ -1,57 +1,64 @@
-<script>
-    const urls = [
-        'blazor.boot.json.br',
-        'blazor.webassembly.js.br',
-        'dotnet.7.0.0-preview.3.22151.6.6spuh9jkv7.js.br',
-        'dotnet.timezones.blat.br',
-        'dotnet.wasm.br',
-        'icudt_EFIGS.dat.br',
-        'Microsoft.AspNetCore.Components.dll.br',
-        'Microsoft.AspNetCore.Components.Web.dll.br',
-        'Microsoft.AspNetCore.Components.WebAssembly.dll.br',
-        'Microsoft.Extensions.Configuration.Abstractions.dll.br',
-        'Microsoft.Extensions.Configuration.dll.br',
-        'Microsoft.Extensions.Configuration.Json.dll.br',
-        'Microsoft.Extensions.DependencyInjection.Abstractions.dll.br',
-        'Microsoft.Extensions.DependencyInjection.dll.br',
-        'Microsoft.Extensions.Logging.Abstractions.dll.br',
-        'Microsoft.Extensions.Logging.dll.br',
-        'Microsoft.Extensions.Options.dll.br',
-        'Microsoft.Extensions.Primitives.dll.br',
-        'Microsoft.JSInterop.dll.br',
-        'Microsoft.JSInterop.WebAssembly.dll.br',
-        'System.Collections.Concurrent.dll.br',
-        'System.Collections.dll.br',
-        'System.ComponentModel.dll.br',
-        'System.Memory.dll.br',
-        'System.Net.Http.dll.br',
-        'System.Net.Http.Json.dll.br',
-        'System.Net.Primitives.dll.br',
-        'System.Private.CoreLib.dll.br',
-        'System.Private.Runtime.InteropServices.JavaScript.dll.br',
-        'System.Private.Uri.dll.br',
-        'System.Runtime.dll.br',
-        'System.Text.Encodings.Web.dll.br',
-        'System.Text.Json.dll.br',
-        'WasmChunkingExploration.dll.br'
-    ];
-
-    (async function() {
-        const startTime = new Date().valueOf();
-        const fetchPromises = urls.map(async u => {
-            const response = await fetch(u);
-            return await response.arrayBuffer();
-        });
-        await Promise.all(fetchPromises);
-        const endTime = new Date().valueOf();
-
-        console.log(`Fetched ${urls.length} resources in ${endTime - startTime}ms`);
-    })();
-
-    /*
-    Need to consider:
-    - Impact of the filename extension on the server's willingness to serve it as compressed
-    - Impact of the XOR on compression results
-    - Whether some level of bundling would produce better real-world load times, even with HTTP/2
-    */
-</script>
+<html>
+    <head>
+        <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"> 
+    </head>
+    <body>
+        <script>
+            const urls = [
+                'blazor.boot.json.br',
+                'blazor.webassembly.js.br',
+                'dotnet.7.0.0-preview.3.22151.6.6spuh9jkv7.js.br',
+                'dotnet.timezones.blat.br',
+                'dotnet.wasm.br',
+                'icudt_EFIGS.dat.br',
+                'Microsoft.AspNetCore.Components.dll.br',
+                'Microsoft.AspNetCore.Components.Web.dll.br',
+                'Microsoft.AspNetCore.Components.WebAssembly.dll.br',
+                'Microsoft.Extensions.Configuration.Abstractions.dll.br',
+                'Microsoft.Extensions.Configuration.dll.br',
+                'Microsoft.Extensions.Configuration.Json.dll.br',
+                'Microsoft.Extensions.DependencyInjection.Abstractions.dll.br',
+                'Microsoft.Extensions.DependencyInjection.dll.br',
+                'Microsoft.Extensions.Logging.Abstractions.dll.br',
+                'Microsoft.Extensions.Logging.dll.br',
+                'Microsoft.Extensions.Options.dll.br',
+                'Microsoft.Extensions.Primitives.dll.br',
+                'Microsoft.JSInterop.dll.br',
+                'Microsoft.JSInterop.WebAssembly.dll.br',
+                'System.Collections.Concurrent.dll.br',
+                'System.Collections.dll.br',
+                'System.ComponentModel.dll.br',
+                'System.Memory.dll.br',
+                'System.Net.Http.dll.br',
+                'System.Net.Http.Json.dll.br',
+                'System.Net.Primitives.dll.br',
+                'System.Private.CoreLib.dll.br',
+                'System.Private.Runtime.InteropServices.JavaScript.dll.br',
+                'System.Private.Uri.dll.br',
+                'System.Runtime.dll.br',
+                'System.Text.Encodings.Web.dll.br',
+                'System.Text.Json.dll.br',
+                'WasmChunkingExploration.dll.br'
+            ];
+        
+            (async function() {
+                const startTime = new Date().valueOf();
+                const fetchPromises = urls.map(async u => {
+                    const response = await fetch(u);
+                    return await response.arrayBuffer();
+                });
+                await Promise.all(fetchPromises);
+                const endTime = new Date().valueOf();
+        
+                console.log(`Fetched ${urls.length} resources in ${endTime - startTime}ms`);
+            })();
+        
+            /*
+            Need to consider:
+            - Impact of the filename extension on the server's willingness to serve it as compressed
+            - Impact of the XOR on compression results
+            - Whether some level of bundling would produce better real-world load times, even with HTTP/2
+            */
+        </script>        
+    </body>
+</html>

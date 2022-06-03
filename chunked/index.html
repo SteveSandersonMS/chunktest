@@ -1,27 +1,34 @@
-<script>
-    const urls = [
-        'System.Private.CoreLib.dll.br',
-        'dlls.tar.br',
-        'dotnet.wasm.br',
-        'icu.tar.br'
-    ];
-
-    (async function() {
-        const startTime = new Date().valueOf();
-        const fetchPromises = urls.map(async u => {
-            const response = await fetch(u);
-            return await response.arrayBuffer();
-        });
-        await Promise.all(fetchPromises);
-        const endTime = new Date().valueOf();
-
-        console.log(`Fetched ${urls.length} resources in ${endTime - startTime}ms`);
-    })();
-
-    /*
-    Need to consider:
-    - Impact of the filename extension on the server's willingness to serve it as compressed
-    - Impact of the XOR on compression results
-    - Whether some level of bundling would produce better real-world load times, even with HTTP/2
-    */
-</script>
+<html>
+    <head>
+        <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"> 
+    </head>
+    <body>
+        <script>
+            const urls = [
+                'System.Private.CoreLib.dll.br',
+                'dlls.tar.br',
+                'dotnet.wasm.br',
+                'icu.tar.br'
+            ];
+        
+            (async function() {
+                const startTime = new Date().valueOf();
+                const fetchPromises = urls.map(async u => {
+                    const response = await fetch(u);
+                    return await response.arrayBuffer();
+                });
+                await Promise.all(fetchPromises);
+                const endTime = new Date().valueOf();
+        
+                console.log(`Fetched ${urls.length} resources in ${endTime - startTime}ms`);
+            })();
+        
+            /*
+            Need to consider:
+            - Impact of the filename extension on the server's willingness to serve it as compressed
+            - Impact of the XOR on compression results
+            - Whether some level of bundling would produce better real-world load times, even with HTTP/2
+            */
+        </script>        
+    </body>
+</html>
